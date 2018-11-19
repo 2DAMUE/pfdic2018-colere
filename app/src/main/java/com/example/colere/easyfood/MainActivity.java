@@ -10,9 +10,7 @@ import info.hoang8f.widget.FButton;
 
 public class MainActivity extends AppCompatActivity {
 
- /* VIDEO1, TERMINADO
-    VIDEO2, TERMINADO
-    VIDEO3, TERMINADO      */
+ 
 
    FButton btnSignIn, btnSignUp;
 
