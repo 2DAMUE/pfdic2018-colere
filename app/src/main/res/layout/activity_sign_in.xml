@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn">
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:gravity="center"
+            android:textColorHint="@android:color/holo_red_light"
+            app:met_baseColor="@android:color/holo_red_light"
+            android:inputType="phone"
+            android:text="6378214098"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            android:hint="Telefono Movil"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="11"
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:text="1234"
+            android:textColorHint="@android:color/holo_red_light"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:met_baseColor="@android:color/holo_red_light"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="11"
+            app:met_singleLineEllipsis="true" />
+
+    </LinearLayout>
+
+    <info.hoang8f.widget.FButton
+        app:fButtonColor="@color/btnSignIn"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="italic|bold"
+        android:text="Sign In"
+        android:textColor="@android:color/white"
+        app:cornerRadius="4dp"
+        android:layout_margin="7dp"
+        app:shadowColor="@android:color/black"
+        app:shadowEnabled="true"
+        app:shadowHeight="5dp" />
+
+</RelativeLayout>

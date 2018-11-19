@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "334109697589",
+    "firebase_url": "https://easyfoodcolere.firebaseio.com",
+    "project_id": "easyfoodcolere",
+    "storage_bucket": "easyfoodcolere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334109697589:android:0672cdb59a33e7b0",
+        "android_client_info": {
+          "package_name": "com.example.colere.easyfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334109697589-qahd0qu9ol4o0839grn8supmpg0s4n7u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.colere.easyfood",
+            "certificate_hash": "5f1d50b4c1be61dd75cfa52ab589f044981d748c"
+          }
+        },
+        {
+          "client_id": "334109697589-td94c38r67v8lvlj2im0aore4vnf1le8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKJEdSyDJE9Khq9gtpmV-3UofBUEHzfck"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334109697589-td94c38r67v8lvlj2im0aore4vnf1le8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
