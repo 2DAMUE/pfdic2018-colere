@@ -16,9 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.colere.easyfood.Common.Category;
+import com.example.colere.easyfood.Model.Category;
 import com.example.colere.easyfood.Common.Common;
 import com.example.colere.easyfood.Interface.ItemClickListener;
 import com.example.colere.easyfood.ViewHolder.MenuViewHolder;
@@ -54,8 +53,8 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent cartIntent = new Intent(Home.this, Cart.class);
+                startActivity(cartIntent);
             }
         });
 

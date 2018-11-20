@@ -1,4 +1,4 @@
-package com.example.colere.easyfood.Common;
+package com.example.colere.easyfood.Model;
 
 import com.example.colere.easyfood.SignIn;
 
