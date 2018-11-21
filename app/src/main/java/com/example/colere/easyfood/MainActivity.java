@@ -10,7 +10,7 @@ import info.hoang8f.widget.FButton;
 
 public class MainActivity extends AppCompatActivity {
 
- 
+
 
    FButton btnSignIn, btnSignUp;
 
