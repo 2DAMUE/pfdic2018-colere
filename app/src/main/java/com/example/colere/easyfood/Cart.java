@@ -49,7 +49,7 @@ public class Cart extends AppCompatActivity {
 
         //Firebase
         database = FirebaseDatabase.getInstance();
-        requests = database.getReference("Request");
+        requests = database.getReference("Requests");
 
         //Init
         recyclerView = (RecyclerView) findViewById(R.id.listCart);
@@ -63,6 +63,7 @@ public class Cart extends AppCompatActivity {
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 showAlertDialog();
 
             }
@@ -87,8 +88,8 @@ public class Cart extends AppCompatActivity {
 
         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //create new Request
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Create new Request
                 Request request = new Request(
                         Common.currentUser.getPhone(),
                         Common.currentUser.getName(),
@@ -102,15 +103,15 @@ public class Cart extends AppCompatActivity {
                         .setValue(request);
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();
-                Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT);
+                Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         });
         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
             }
         });
         alertDialog.show();
