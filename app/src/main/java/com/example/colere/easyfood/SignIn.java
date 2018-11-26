@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class SignIn extends AppCompatActivity {
-    EditText edtPhone, edtPassword;
+   MaterialEditText edtPhone, edtPassword;
     Button btnSignIn;
 
 
@@ -33,6 +33,13 @@ public class SignIn extends AppCompatActivity {
         edtPassword=(MaterialEditText)findViewById(R.id.edtPassword);
         edtPhone=(MaterialEditText)findViewById(R.id.edtPhone);
         btnSignIn=(Button)findViewById(R.id.btnSignIn);
+
+        //Recibimos datos
+        Intent i = getIntent();
+        String telefono = i.getStringExtra("Telefono");
+        String password = i.getStringExtra("password");
+        edtPhone.setText(telefono);
+        edtPassword.setText(password);
 
         //Iniciamos Firebase
 

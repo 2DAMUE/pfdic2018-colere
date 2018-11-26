@@ -19,7 +19,7 @@
             android:textColorHint="@android:color/holo_red_light"
             app:met_baseColor="@android:color/holo_red_light"
             android:inputType="phone"
-            android:text="6378214098"
+            android:text=""
             android:textSize="24sp"
             android:textStyle="italic"
             android:hint="Telefono Movil"
@@ -34,15 +34,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Password"
+            android:hint="Escribe tu password de 8 caracteres"
             android:inputType="textPassword"
-            android:text="1234"
+            android:text=""
             android:textColorHint="@android:color/holo_red_light"
             android:textSize="24sp"
             android:textStyle="italic"
             app:met_baseColor="@android:color/holo_red_light"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
+            app:met_maxCharacters="8"
             app:met_singleLineEllipsis="true" />
 
     </LinearLayout>

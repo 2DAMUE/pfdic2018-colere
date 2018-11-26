@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@android:color/black"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -22,7 +22,14 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="italic|bold" />-->
-
+    <TextView
+        android:textStyle="italic|bold"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:text="Easy food Cliente"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 
     </LinearLayout>
 
