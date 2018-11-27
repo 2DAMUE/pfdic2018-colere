@@ -85,6 +85,8 @@ public class Home extends AppCompatActivity
 
         if(Common.isConnectedToInterner(this))
             loadMenu();
+
+
         else {
             Toast.makeText(Home.this, "Please Check your connection!", Toast.LENGTH_SHORT).show();
             return;

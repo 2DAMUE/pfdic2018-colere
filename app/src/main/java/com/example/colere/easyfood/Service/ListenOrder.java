@@ -74,7 +74,8 @@ public class ListenOrder extends Service implements ChildEventListener {
                 .setContentText("Pedido #" + key + " was update status to " + Common.convertCodeToStatus(request.getStatus()))
                 .setContentIntent(conteIntent)
                 .setContentInfo("Info")
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentIntent(conteIntent);
 
 
         NotificationManager notificationManager = (NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
