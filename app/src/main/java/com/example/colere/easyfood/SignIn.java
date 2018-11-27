@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import com.rey.material.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -20,9 +21,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import io.paperdb.Paper;
+
 public class SignIn extends AppCompatActivity {
-   MaterialEditText edtPhone, edtPassword;
+    MaterialEditText edtPhone, edtPassword;
     Button btnSignIn;
+    CheckBox ckbRemember;
 
 
     @Override
@@ -33,6 +37,10 @@ public class SignIn extends AppCompatActivity {
         edtPassword=(MaterialEditText)findViewById(R.id.edtPassword);
         edtPhone=(MaterialEditText)findViewById(R.id.edtPhone);
         btnSignIn=(Button)findViewById(R.id.btnSignIn);
+        ckbRemember=(CheckBox) findViewById(R.id.ckbRemember);
+
+        //Init Paper
+        Paper.init(this);
 
         //Recibimos datos
         Intent i = getIntent();
@@ -54,6 +62,13 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (Common.isConnectedToInterner(getBaseContext())){
+
+                    //Guardar usuario y contraseña
+                    if(ckbRemember.isChecked()){
+                        Paper.book().write(Common.USER_KEY, edtPhone.getText().toString());
+                        Paper.book().write(Common.PWD_KEY, edtPassword.getText().toString());
+                    }
+
 
                     final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Porfavor espera...");

@@ -45,6 +45,16 @@
             app:met_maxCharacters="8"
             app:met_singleLineEllipsis="true" />
 
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/ckbRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Recordar"
+            android:textColor="@android:color/holo_red_dark"
+            app:cbd_strokeColor="@android:color/holo_red_dark"
+            android:gravity="center_vertical"/>
+
     </LinearLayout>
 
     <info.hoang8f.widget.FButton

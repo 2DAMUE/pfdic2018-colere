@@ -44,5 +44,8 @@ dependencies {
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 
     implementation 'com.github.mancj:MaterialSearchBar:0.8.1'
+
+    implementation 'io.paperdb:paperdb:2.1'
+    implementation 'com.github.rey5137:material:1.2.4'
 }
 apply plugin: 'com.google.gms.google-services'
