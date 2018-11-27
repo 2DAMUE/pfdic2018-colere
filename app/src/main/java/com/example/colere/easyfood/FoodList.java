@@ -128,7 +128,7 @@ public class FoodList extends AppCompatActivity {
                 Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("Name").equalTo(text.toString())
+                foodList.orderByChild("name").equalTo(text.toString())
 
         ) {
             @Override
@@ -153,7 +153,7 @@ public class FoodList extends AppCompatActivity {
     }
 
     private void loadsuggest() {
-        foodList.orderByChild("MenuId").equalTo(categoryId)
+        foodList.orderByChild("menuId").equalTo(categoryId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -174,7 +174,7 @@ public class FoodList extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("MenuId").equalTo(categoryId) //like : Select * from Foods where MenuId =
+                foodList.orderByChild("menuId").equalTo(categoryId) //like : Select * from Foods where MenuId =
                 ) {
             @Override
             protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
