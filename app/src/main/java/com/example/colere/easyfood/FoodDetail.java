@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.colere.easyfood.Common.Common;
 import com.example.colere.easyfood.Model.Food;
 import com.example.colere.easyfood.Model.Order;
 import com.example.colere.easyfood.database.Database;
@@ -77,7 +78,16 @@ public class FoodDetail extends AppCompatActivity {
         if(getIntent() != null)
             foodId = getIntent().getStringExtra("FoodId");
         if(!foodId.isEmpty()){
+            if(Common.isConnectedToInterner(getBaseContext()))
+
+                if(Common.isConnectedToInterner(getBaseContext()))
+
             getDetailFood(foodId);
+            else
+                {
+                    Toast.makeText(FoodDetail.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
         }
     }
     private  void getDetailFood(String foodId){

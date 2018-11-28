@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.colere.easyfood.Common.Common;
 import com.example.colere.easyfood.Interface.ItemClickListener;
 import com.example.colere.easyfood.Model.Food;
 import com.example.colere.easyfood.ViewHolder.FoodViewHolder;
@@ -59,8 +60,15 @@ public class FoodList extends AppCompatActivity {
         //Get Intent here
         if(getIntent() != null)
             categoryId = getIntent().getStringExtra("CategoryId");
-        if(!categoryId.isEmpty() && categoryId != null){
+        if(!categoryId.isEmpty() && categoryId != null)
+        {
+            if(Common.isConnectedToInterner(getBaseContext()))
             loadListFood(categoryId);
+            else
+            {
+                Toast.makeText(FoodList.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         //Busqueda

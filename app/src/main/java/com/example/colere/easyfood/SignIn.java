@@ -53,7 +53,9 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
+                if (Common.isConnectedToInterner(getBaseContext())){
+
+                    final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Porfavor espera...");
                 mDialog.show();
 
@@ -61,7 +63,7 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //Chqueamos si el usuario no existe en el db
-                        if(dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                             //Get User Information
                             mDialog.dismiss();
                             User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
@@ -74,9 +76,8 @@ public class SignIn extends AppCompatActivity {
                             } else {
                                 Toast.makeText(SignIn.this, "Password Incorrecto", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        else{
-                            Toast.makeText(SignIn.this,"El usuario no existe",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignIn.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -87,6 +88,14 @@ public class SignIn extends AppCompatActivity {
                 });
 
             }
+                else
+                {
+                    Toast.makeText(SignIn.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+        }
+
+
         });
 
     }

@@ -1,11 +1,12 @@
 package com.example.colere.easyfood;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -63,8 +64,11 @@ public class Cart extends AppCompatActivity {
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(cart.size() > 0)
 
-                showAlertDialog();
+                    showAlertDialog();
+                else
+                    Toast.makeText(Cart.this, "Tu carrito esta vacio", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -117,9 +121,34 @@ public class Cart extends AppCompatActivity {
         alertDialog.show();
     }
 
+
+    @Override
+    public boolean onContextItemSelected (MenuItem item) {
+        if (item.getTitle().equals(Common.DELETE))
+            deleteCart(item.getOrder());
+        return true;
+        
+    }
+
+    private void deleteCart(int position) {
+        //We will remove item at List<Order> by position
+        cart.remove(position);
+        //After that, we will delete all old data from SQLite
+        new Database(this).cleanCart();
+        //And final, we will update new data from List<Order> to Sqlite
+        for(Order item:cart)
+            new Database(this).addToCart(item);
+
+        //Refresh
+        loadListFood();
+
+    }
+
+
     private void loadListFood() {
         cart = new Database(this).getCarts();
         adapter = new CartAdapter(cart, this);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
         //Calculate total price
@@ -131,6 +160,10 @@ public class Cart extends AppCompatActivity {
 
             txtTotalPrice.setText(fmt.format(total));
         }
+
+        //Press Ctrl+o
+
+
 
     }
 }

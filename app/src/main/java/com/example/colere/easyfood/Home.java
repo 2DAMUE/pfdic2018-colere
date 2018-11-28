@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.colere.easyfood.Model.Category;
 import com.example.colere.easyfood.Common.Common;
@@ -78,7 +79,12 @@ public class Home extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
-        loadMenu();
+        if(Common.isConnectedToInterner(this))
+            loadMenu();
+        else {
+            Toast.makeText(Home.this, "Please Check your connection!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         //Register service
         Intent service = new Intent(Home.this, ListenOrder.class);
@@ -127,6 +133,8 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.refresh)
+            loadMenu();
 
         return super.onOptionsItemSelected(item);
     }
