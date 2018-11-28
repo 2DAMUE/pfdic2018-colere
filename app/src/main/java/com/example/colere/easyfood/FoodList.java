@@ -16,6 +16,7 @@ import com.example.colere.easyfood.Common.Common;
 import com.example.colere.easyfood.Interface.ItemClickListener;
 import com.example.colere.easyfood.Model.Food;
 import com.example.colere.easyfood.ViewHolder.FoodViewHolder;
+import com.example.colere.easyfood.database.Database;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +44,10 @@ public class FoodList extends AppCompatActivity {
     List<String> suggestList = new ArrayList<>();
     MaterialSearchBar materialSearchBar;
 
+    //Favoritos
+    Database localDB;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,9 @@ public class FoodList extends AppCompatActivity {
         //Firebase
         database = FirebaseDatabase.getInstance();
         foodList = database.getReference("Foods");
+
+        //Local DB
+        localDB = new Database(this);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_food);
         recyclerView .setHasFixedSize(true);
@@ -177,10 +185,31 @@ public class FoodList extends AppCompatActivity {
                 foodList.orderByChild("menuId").equalTo(categoryId) //like : Select * from Foods where MenuId =
                 ) {
             @Override
-            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
+            protected void populateViewHolder(final FoodViewHolder viewHolder, final Food model, final int position) {
                 viewHolder.food_name.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage())
                         .into(viewHolder.food_image);
+
+                //Añadir favoritos
+                if(localDB.isFavorite(adapter.getRef(position).getKey())){
+                    viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                }
+                //Click para cambiar el estado de favorito
+                viewHolder.fav_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!localDB.isFavorite(adapter.getRef(position).getKey())){
+                            localDB.addToFavorites(adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(FoodList.this, "" + model.getName() + " fue añadido a favoritos", Toast.LENGTH_SHORT).show();
+                        } else {
+                            localDB.reomoveToFavorites(adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                            Toast.makeText(FoodList.this, "" + model.getName() + " fue borrada de favoritos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
 
                 final Food local = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
