@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.colere.easyfood"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -47,5 +47,6 @@ dependencies {
 
     implementation 'io.paperdb:paperdb:2.1'
     implementation 'com.github.rey5137:material:1.2.4'
+    implementation 'com.stepstone.apprating:app-rating:2.0.0'
 }
 apply plugin: 'com.google.gms.google-services'
