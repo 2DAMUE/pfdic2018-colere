@@ -5,9 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.example.colere.easyfood.Model.User;
+import com.example.colere.easyfood.Remote.APIService;
+import com.example.colere.easyfood.Remote.RetrofitClient;
 
 public class Common {
     public static User currentUser;
+
+    private static final String BASE_URL = "https://fcm.googleapis.com/";
+
+    public static APIService getFCMService(){
+        return RetrofitClient.getClient(BASE_URL).create(APIService.class);
+    }
 
     public static String convertCodeToStatus(String status){
         if(status.equals("0"))

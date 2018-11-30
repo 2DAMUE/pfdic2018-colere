@@ -2,10 +2,12 @@ package com.example.colere.easyfood;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +17,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.colere.easyfood.Common.Common;
+import com.example.colere.easyfood.Model.MyResponse;
+import com.example.colere.easyfood.Model.Notification;
 import com.example.colere.easyfood.Model.Order;
 import com.example.colere.easyfood.Model.Request;
+import com.example.colere.easyfood.Model.Sender;
+import com.example.colere.easyfood.Model.Token;
+import com.example.colere.easyfood.Remote.APIService;
 import com.example.colere.easyfood.ViewHolder.CartAdapter;
 import com.example.colere.easyfood.database.Database;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.text.NumberFormat;
@@ -29,6 +40,9 @@ import java.util.List;
 import java.util.Locale;
 
 import info.hoang8f.widget.FButton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Cart extends AppCompatActivity {
 
@@ -45,10 +59,15 @@ public class Cart extends AppCompatActivity {
 
     CartAdapter adapter;
 
+    APIService mService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        //Init Service
+        mService = Common.getFCMService();
 
         //Firebase
         database = FirebaseDatabase.getInstance();
@@ -107,12 +126,15 @@ public class Cart extends AppCompatActivity {
                 );
                 //Submit to Firebase
                 //We will using System.CurrentMilli to key
-                requests.child(String.valueOf(System.currentTimeMillis()))
+                String order_number = String.valueOf(System.currentTimeMillis());
+                requests.child(order_number)
                         .setValue(request);
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();
-                Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT).show();
-                finish();
+
+                sendNotificationOrder(order_number);
+                //Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT).show();
+                //finish();
 
             }
         });
@@ -123,6 +145,48 @@ public class Cart extends AppCompatActivity {
             }
         });
         alertDialog.show();
+    }
+
+    private void sendNotificationOrder(final String order_number) {
+        DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");
+        Query data = tokens.orderByChild("isServerToken").equalTo(true); //get all node with isServerToken is true
+        data.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+                    Token serverToken = postSnapShot.getValue(Token.class);
+
+                    //Create raw payload to send
+                    Notification notification = new Notification("EDMT Dev", "You have new order " +order_number);
+                    Sender content = new Sender(serverToken.getToken(), notification);
+                    mService.sendNotification(content)
+                            .enqueue(new Callback<MyResponse>() {
+                                @Override
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if(response.code() == 200){
+                                        if(response.body().success == 1){
+                                            Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }else {
+                                            Toast.makeText(Cart.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
+                                    Log.e("ERROR", t.getMessage());
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

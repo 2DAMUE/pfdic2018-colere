@@ -20,11 +20,12 @@ import android.widget.Toast;
 import com.example.colere.easyfood.Model.Category;
 import com.example.colere.easyfood.Common.Common;
 import com.example.colere.easyfood.Interface.ItemClickListener;
-import com.example.colere.easyfood.Service.ListenOrder;
+import com.example.colere.easyfood.Model.Token;
 import com.example.colere.easyfood.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
 
 import io.paperdb.Paper;
@@ -92,9 +93,14 @@ public class Home extends AppCompatActivity
             return;
         }
 
-        //Register service
-        Intent service = new Intent(Home.this, ListenOrder.class);
-        startService(service);
+        updateToken(FirebaseInstanceId.getInstance().getToken());
+    }
+
+    private void updateToken(String token) {
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference tokens = db.getReference("Tokens");
+        Token data = new Token(token, false); //false because this token send from Client app
+        tokens.child(Common.currentUser.getPhone()).setValue(data);
     }
 
     private void loadMenu(){
