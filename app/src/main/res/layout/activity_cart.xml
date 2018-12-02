@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/total"
-                    android:text="$10,000"
+                    android:text="€0"
                     android:textSize="24sp"
                     android:textColor="@android:color/white"
                     android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
 
             <info.hoang8f.widget.FButton
                 android:id="@+id/btnPlaceOrder"
-                android:text="Place Order"
+                android:text="Realizar pedido"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

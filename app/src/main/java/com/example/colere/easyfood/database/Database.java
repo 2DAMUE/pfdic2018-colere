@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database extends SQLiteAssetHelper {
-    private static final String DB_NAME="EatItDB.db";
+    private static final String DB_NAME="BBDDSQL.db";
     private static final int DB_VERSION=1;
 
     public Database(Context context) {
