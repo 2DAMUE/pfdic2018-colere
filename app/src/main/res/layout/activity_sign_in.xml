@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Escribe tu password de 8 caracteres"
+            android:hint="Password"
             android:inputType="textPassword"
             android:text=""
             android:textColorHint="@android:color/holo_red_light"
