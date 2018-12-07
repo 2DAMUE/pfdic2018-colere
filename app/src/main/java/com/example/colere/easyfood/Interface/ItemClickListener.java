@@ -1,7 +1,0 @@
-package com.example.colere.easyfood.Interface;
-
-import android.view.View;
-
-public interface ItemClickListener {
-    void onClick (View view, int position, boolean isLongClick);
-}
