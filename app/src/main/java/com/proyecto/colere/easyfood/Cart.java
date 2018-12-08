@@ -112,7 +112,6 @@ public class Cart extends AppCompatActivity {
         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //Create new Request
                 Request request = new Request(
                         Common.currentUser.getPhone(),
                         Common.currentUser.getName(),
@@ -122,12 +121,11 @@ public class Cart extends AppCompatActivity {
                         edtComment.getText().toString(),
                         cart
                 );
-                //Submit to Firebase
-                //We will using System.CurrentMilli to key
+
                 String order_number = String.valueOf(System.currentTimeMillis());
                 requests.child(order_number)
                         .setValue(request);
-                //Delete cart
+
                 new Database(getBaseContext()).cleanCart();
 
                 sendNotificationOrder(order_number);
@@ -147,7 +145,7 @@ public class Cart extends AppCompatActivity {
 
     private void sendNotificationOrder(final String order_number) {
         DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");
-        Query data = tokens.orderByChild("isServerToken").equalTo(true); //get all node with isServerToken is true
+        Query data = tokens.orderByChild("isServerToken").equalTo(true);
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -155,7 +153,7 @@ public class Cart extends AppCompatActivity {
                     Token serverToken = postSnapShot.getValue(Token.class);
 
                     //Create raw payload to send
-                    Notification notification = new Notification("EDMT Dev", "You have new order " +order_number);
+                    Notification notification = new Notification("EDMT Dev", "Tienes order nuevo " +order_number);
                     Sender content = new Sender(serverToken.getToken(), notification);
                     mService.sendNotification(content)
                             .enqueue(new Callback<MyResponse>() {
@@ -166,7 +164,7 @@ public class Cart extends AppCompatActivity {
                                             Toast.makeText(Cart.this, "Gracias, Pedido realizado", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }else {
-                                            Toast.makeText(Cart.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Cart.this, "Ha fallado!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
 

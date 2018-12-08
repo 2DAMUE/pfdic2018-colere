@@ -86,7 +86,7 @@ public class SignIn extends AppCompatActivity {
 
 
                     final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
-                mDialog.setMessage("Porfavor espera...");
+                mDialog.setMessage("Por favor, espera...");
                 mDialog.show();
 
                 table_user.addValueEventListener(new ValueEventListener() {
@@ -104,7 +104,7 @@ public class SignIn extends AppCompatActivity {
                                 startActivity(homeIntent);
                                 finish();
                             } else {
-                                Toast.makeText(SignIn.this, "Password Incorrecto", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignIn.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(SignIn.this, "El usuario no existe", Toast.LENGTH_SHORT).show();

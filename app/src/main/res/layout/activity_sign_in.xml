@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:inputType="textPassword"
             android:text=""
             android:textColorHint="@android:color/holo_red_light"
@@ -46,29 +46,29 @@
             app:met_singleLineEllipsis="true" />
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <com.rey.material.widget.CheckBox
                 android:id="@+id/ckbRemember"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
                 style="@style/Material.Drawable.CheckBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="Recordar"
                 android:textColor="@android:color/holo_red_dark"
-                app:cbd_strokeColor="@android:color/holo_red_dark"
-                android:gravity="center_vertical"/>
+                app:cbd_strokeColor="@android:color/holo_red_dark" />
 
             <TextView
                 android:id="@+id/txtForgotPwd"
-                android:textColor="@android:color/holo_red_dark"
-                android:text="@string/forgot_pwd"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/forgot_pwd"
+                android:textColor="@android:color/holo_red_dark" />
         </LinearLayout>
 
     </LinearLayout>

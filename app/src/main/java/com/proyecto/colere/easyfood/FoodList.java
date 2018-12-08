@@ -74,14 +74,14 @@ public class FoodList extends AppCompatActivity {
             loadListFood(categoryId);
             else
             {
-                Toast.makeText(FoodList.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(FoodList.this,"Por favor, revisa tu conexión!",Toast.LENGTH_SHORT).show();
                 return;
             }
         }
 
         //Busqueda
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.searchBar);
-        materialSearchBar.setHint("Enter your food");
+        materialSearchBar.setHint("Escriba tu comida");
         loadsuggest();
         materialSearchBar.setLastSuggestions(suggestList);
         materialSearchBar.setCardViewElevation(10);

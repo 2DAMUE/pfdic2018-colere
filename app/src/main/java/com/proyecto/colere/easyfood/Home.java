@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity
 
 
         else {
-            Toast.makeText(Home.this, "Please Check your connection!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Home.this, "Por favor, revisa tu conexión!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -166,13 +166,15 @@ public class Home extends AppCompatActivity
             Intent orderIntent = new Intent(Home.this, OrderStatus.class);
             startActivity(orderIntent);
         } else if (id == R.id.nav_log_out) {
-            //Borrar guardado usuario y contraseña
             Paper.book().destroy();
 
             //Logout
             Intent signIn = new Intent(Home.this, SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);
+        }else if (id == R.id.nav_contacts) {
+            Intent orderIntent = new Intent(Home.this, Contactos.class);
+            startActivity(orderIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

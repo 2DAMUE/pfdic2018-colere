@@ -11,35 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.proyecto.colere.easyfood.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.proyecto.colere.easyfood.SignIn" />
-        <activity android:name="com.proyecto.colere.easyfood.SignUp" />
+        <activity android:name=".SignIn" />
+        <activity android:name=".SignUp" />
         <activity
-            android:name="com.proyecto.colere.easyfood.Home"
+            android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.proyecto.colere.easyfood.FoodList" />
-        <activity android:name="com.proyecto.colere.easyfood.FoodDetail" />
-        <activity android:name="com.proyecto.colere.easyfood.Cart" />
-        <activity android:name="com.proyecto.colere.easyfood.OrderStatus" />
+        <activity android:name=".FoodList" />
+        <activity android:name=".FoodDetail" />
+        <activity android:name=".Cart" />
+        <activity android:name=".OrderStatus" />
 
-        <service android:name="com.proyecto.colere.easyfood.Service.MyFirebaseIdService">
+        <service android:name=".Service.MyFirebaseIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Service.MyFirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name="com.proyecto.colere.easyfood.Service.MyFirebaseMessaging">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <activity android:name=".Contactos"></activity>
     </application>
 
 </manifest>

@@ -25,7 +25,6 @@ public class OrderStatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_status);
 
-        //Firebase
         database = FirebaseDatabase.getInstance();
         requests = database.getReference("Requests");
 
@@ -41,8 +40,6 @@ public class OrderStatus extends AppCompatActivity {
         } else {
             loadOrders(getIntent().getStringExtra("userPhone"));
         }
-
-
     }
     private void loadOrders(String phone){
         adapter = new FirebaseRecyclerAdapter<Request, OrderViewHolder>(
@@ -62,5 +59,4 @@ public class OrderStatus extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
     }
-
 }

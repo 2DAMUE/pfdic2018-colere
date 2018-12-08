@@ -14,33 +14,33 @@
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/edtAddress"
-                android:hint="Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimary"
+                android:hint="Dirección"
+                android:inputType="text"
                 android:text=""
                 android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="34sp"
-                android:inputType="text"
                 app:met_baseColor="@color/colorPrimary"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/colorPrimary"
-                app:met_singleLineEllipsis="true"/>
+                app:met_singleLineEllipsis="true" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/edtComment"
-                android:hint="Comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimary"
+                android:hint="Comentario"
+                android:inputType="textMultiLine"
                 android:text=""
                 android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="24sp"
-                android:inputType="textMultiLine"
                 app:met_baseColor="@color/colorPrimary"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/colorPrimary"
-                app:met_singleLineEllipsis="true"/>
+                app:met_singleLineEllipsis="true" />
 
         </LinearLayout>
 

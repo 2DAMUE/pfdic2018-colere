@@ -91,7 +91,7 @@ public class SignUp extends AppCompatActivity {
                     });
                 }
                 else{
-                    Toast.makeText(SignUp.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,"Por favor, revisa tu conexión!",Toast.LENGTH_SHORT).show();
                     return;
                 }
             }

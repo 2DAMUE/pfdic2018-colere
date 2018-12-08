@@ -81,7 +81,7 @@ public class FoodDetail extends AppCompatActivity implements RatingDialogListene
                         currentFood.getDiscount()
                 ));
 
-                Toast.makeText(FoodDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FoodDetail.this, "Añadido a carta", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -104,7 +104,7 @@ public class FoodDetail extends AppCompatActivity implements RatingDialogListene
                 getRatingFood(foodId);
             }else
                 {
-                    Toast.makeText(FoodDetail.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FoodDetail.this,"Por favor, revisa tu conexión!",Toast.LENGTH_SHORT).show();
                     return;
                 }
         }
@@ -137,15 +137,15 @@ public class FoodDetail extends AppCompatActivity implements RatingDialogListene
 
     private void showRatingDialog() {
         new AppRatingDialog.Builder()
-                .setPositiveButtonText("Submit")
-                .setNegativeButtonText("Cancel")
-                .setNoteDescriptions(Arrays.asList("Very Bad", "Not Good", "Quite Ok", "Very Good", "Excellent"))
+                .setPositiveButtonText("Enviar")
+                .setNegativeButtonText("Cancelar")
+                .setNoteDescriptions(Arrays.asList("Muy mal", "Mal", "Bastante bien", "Muy bien", "Excelente"))
                 .setDefaultRating(1)
-                .setTitle("Rate this food")
-                .setDescription("Please select some starts and give your feedback")
+                .setTitle("Califica esta comida")
+                .setDescription("Por favor, califica esta comida y escribe tu opinión.")
                 .setTitleTextColor(R.color.colorPrimary)
                 .setDescriptionTextColor(R.color.colorPrimary)
-                .setHint("Please write your comment here ...")
+                .setHint("Por favor, escribe tu comentario aquí...")
                 .setHintTextColor(R.color.colorAccent)
                 .setCommentTextColor(R.color.white)
                 .setCommentBackgroundColor(R.color.colorPrimaryDark)
@@ -164,7 +164,7 @@ public class FoodDetail extends AppCompatActivity implements RatingDialogListene
                 Picasso.with(getBaseContext()).load(currentFood.getImage())
                         .into(food_image);
 
-                collapsingToolbarLayout.setTitle(currentFood.getName());
+                //collapsingToolbarLayout.setTitle(currentFood.getName());
 
                 food_price.setText(currentFood.getPrice());
 

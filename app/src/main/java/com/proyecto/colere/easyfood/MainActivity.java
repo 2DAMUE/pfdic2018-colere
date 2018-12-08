@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         //Init Paper
         Paper.init(this);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() { //llamamos al botón
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Common.isConnectedToInterner(getBaseContext())){
             final ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
-            mDialog.setMessage("Porfavor espera...");
+            mDialog.setMessage("Por favor, espera...");
             mDialog.show();
 
             table_user.addValueEventListener(new ValueEventListener() {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(homeIntent);
                             finish();
                         } else {
-                            Toast.makeText(MainActivity.this, "Password Incorrecto", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(MainActivity.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(MainActivity.this,"Please Check your connection!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Por favor, revisa tu conexión!",Toast.LENGTH_SHORT).show();
             return;
         }
     }

@@ -89,7 +89,7 @@
                         android:id="@+id/food_name"
                         android:layout_marginTop="8dp"
                         android:padding="12dp"
-                        android:text="Food Name"
+                        android:text="Nombre de comida"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold"
